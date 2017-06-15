@@ -1,1 +1,5 @@
-# ruby_advanced_building_blocks
+Ruby projects from The Odin Project curriculum:
+
+#bubble_sort sorts an array of numbers without using the sort method.
+
+#enumerable builds methods from the ground up to prove there is no special magic behind methods in Ruby. 
