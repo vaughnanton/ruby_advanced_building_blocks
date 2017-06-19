@@ -50,6 +50,14 @@ module Enumerable
   end
 
   def my_count
+    i=0
+    self.my_each do |element|
+      if block_given? 
+        i += 1 if yield(element)
+      else
+        i += 1
+      end
+      i
   end
 
   def my_map
@@ -57,5 +65,5 @@ module Enumerable
 
   def my_inject
   end
-  
+
 end
