@@ -19,11 +19,22 @@ module Enumerable
   end
 
   def my_select
-    use my_each here but not each
+    result_array = Array.new
+    self.my_each do |element|
+      if yield(element)
+        result_array << element
+      end
+    end
+    result_array
   end
-  
+
   def my_all
+    self.my_each do |element|
+      return false unless yield(element)
+    end
+    true
   end
+
   def my_any?
   end
   def my_none?
