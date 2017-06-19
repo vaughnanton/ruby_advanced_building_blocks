@@ -36,13 +36,26 @@ module Enumerable
   end
 
   def my_any?
+    self.my_each do |element|
+      return true unless yield(element)
+    end
+    false
   end
+
   def my_none?
+    self.my_each do |element|
+      return false unless yield(element)
+    end
+    false
   end
+
   def my_count
   end
+
   def my_map
   end
+
   def my_inject
   end
+  
 end
