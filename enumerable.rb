@@ -52,7 +52,7 @@ module Enumerable
   def my_count
     i=0
     self.my_each do |element|
-      if block_given? 
+      if block_given?
         i += 1 if yield(element)
       else
         i += 1
@@ -60,10 +60,32 @@ module Enumerable
       i
   end
 
-  def my_map
+  def my_map(&block)
+    array = Array.new
+    if block_given?
+      self.my_each do |element|
+        array << element
+      end
+    else
+      self.my_each do |element|
+        result << element.block.call
+      end
+    end
+    result
   end
 
-  def my_inject
+  def my_inject(i=nil)
+    if i == nil
+      n=1
+    else
+      n=i
+    end
+    self.my_each do |element|
+      n = yield(n, element)
+    end
+    n
   end
 
-end
+  def multiply_els(array)
+    array.my_inject { |result, element| result * element }
+  end
